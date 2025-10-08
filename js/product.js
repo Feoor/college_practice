@@ -1,9 +1,33 @@
-// TODO: получить id товара из URL (например product.html?id=3)
+document.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
 
-// TODO: через API загрузить товар по ID
+    if (!productId) {
+        console.error("Product ID not found in URL");
+        window.location.href = "index.html";
+        return;
+    }
 
-// TODO: отрисовать карточку товара (фото, название, описание, цена)
+    try {
+        // Загрузка товара
+        const container = document.querySelector("section.product-page .container-sm");
+        const productRaw = await getProductById(productId);
+        const product = new Product(
+            productRaw.id,
+            productRaw.title,
+            productRaw.price,
+            productRaw.rating.rate,
+            productRaw.description,
+            productRaw.image,
+            productRaw.category,
+            productRaw.quantity
+        );
 
-// TODO: кнопка "Добавить в корзину" сохраняет товар в localStorage
+        container.appendChild(product.renderProductPage());
 
-// TODO: кнопки "В каталог" и "В корзину" работают как переходы
+    } catch (error) {
+        console.error("Error loading product:", error);
+        window.location.href = "index.html";
+    }
+});
+

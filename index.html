@@ -7,12 +7,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <meta name="description" content="">
 
-    <link rel="icon" href="../../favicon.ico" sizes="any">
-    <link rel="icon" href="../../icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="../../icon.png">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
 </head>
 <body>
 <!-- Навбар -->
@@ -23,14 +23,14 @@
 
             <div class="header__left-side">
                 <div class="header__logo">
-                    <a href="../index.html" class="eatly-logo">eatly</a>
+                    <a href="index.html" class="eatly-logo">eatly</a>
 
                 </div>
 
                 <nav class="header__nav">
                     <ul class="header__list menu list-reset">
-                        <li class="menu__item menu__item--active"><a href="#">Меню</a></li>
-                        <li class="menu__item"><a href="contact_page.html">Контакты</a></li>
+                        <li class="menu__item menu__item--active"><a href="#">Каталог</a></li>
+                        <li class="menu__item"><a href="cart.html">Корзина</a></li>
                     </ul>
                 </nav>
             </div>
@@ -50,13 +50,13 @@
                     <div class="sidebar__header">
                         <div class="sidebar__brand">
                             <!-- Логотип без текста -->
-                            <a href="../index.html" class="eatly-logo"></a>
+                            <a href="index.html" class="eatly-logo"></a>
                         </div>
                     </div>
                     <div class="sidebar__nav">
                         <ul class="sidebar__list menu list-reset">
-                            <li class="menu__item"><a href="#">Меню</a></li>
-                            <li class="menu__item"><a href="contact_page.html">Контакты</a></li>
+                            <li class="menu__item"><a href="#">Каталог</a></li>
+                            <li class="menu__item"><a href="cart.html">Корзина</a></li>
                         </ul>
                     </div>
                     <div class="sidebar__buttons d-flex flex-column justify-content-between text-center">
@@ -71,112 +71,6 @@
 
 
 <main class="main">
-    <!-- Фильтры, поиск и баннер -->
-    <section class="food-filter">
-        <div class="container-sm">
-
-            <!-- Обертка сетки -->
-            <div class="food-filter__wrapper row justify-content-between g-1">
-
-                <!-- Левая колонка -->
-                <div class="food-filter__left-column col-12 col-md-7 d-flex flex-column justify-content-between">
-                    <!-- Баннер -->
-                    <div class="food-filter__promo-banner">
-                        <h2 class="promo-banner__title">
-                            СКИДКА 50%
-                            <br><span class="text-muted--purple">НА ВЫХОДНЫХ</span>
-                        </h2>
-                    </div>
-
-                    <!-- Поиск -->
-                    <div class="food-filter__search">
-                        <div class="form-floating">
-                            <input type="text" class="food-filter__search-input form-control" placeholder="Поиск" id="foodFilterSearchInput">
-                            <label for="foodFilterSearchInput">Поиск</label>
-                        </div>
-
-                        <div class="food-filter__display-filters col-12 btn-group" role="group">
-                            <input type="radio" class="btn-check food-filter__display-filter" name="sortShowFilterGroup" id="sortShowAll" data-filter="all" checked>
-                            <label class="btn btn-outline-primary" for="sortShowAll">Все</label>
-
-                            <input type="radio" class="btn-check food-filter__display-filter" name="sortShowFilterGroup" id="sortShowRestaurants" data-filter="restaurants">
-                            <label class="btn btn-outline-primary" for="sortShowRestaurants">Рестораны</label>
-
-                            <input type="radio" class="btn-check food-filter__display-filter" name="sortShowFilterGroup" id="sortShowDishes" data-filter="dishes">
-                            <label class="btn btn-outline-primary" for="sortShowDishes">Блюда</label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Правая колонка (фильтры) -->
-                <div class="food-filter__right-column col-12 col-md-4">
-                    <div class="food-filter__filter-panel shadow">
-
-                        <!-- Фильтр по категориям -->
-                        <div class="filter-panel__category">
-                            <h3 class="filter-panel__category-title">Категории</h3>
-                            <div class="filter-panel__category-list row g-3" id="categoriesFilter">
-                                <div class="col-3 col-md-6 col-xl-3">
-                                    <button class="filter-panel__category-item" data-category="pizza">Pizza</button>
-                                </div>
-                                <div class="col-3 col-md-6 col-xl-3">
-                                    <button class="filter-panel__category-item" data-category="asian">Asian</button>
-                                </div>
-                                <div class="col-3 col-md-6 col-xl-3">
-                                    <button class="filter-panel__category-item" data-category="donat">Donat</button>
-                                </div>
-                                <div class="col-3 col-md-6 col-xl-3">
-                                    <button class="filter-panel__category-item" data-category="ice">Ice</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Фильтр по сортировке -->
-                        <div class="filter-panel__sort">
-                            <h3 class="filter-panel__sort-title">Сортировать По</h3>
-                            <div class="filter-panel__sort-list row row-cols-2 gx-5 gy-1" id="sortByFilters">
-                                <div class="filter-panel__sort-item col">
-                                    <input type="radio" class="filter-panel__sort-btn" name="sortByFilter" id="sortByRecommends" data-sort="rating">
-                                    <label class="btn" for="sortByRecommends">Рекомендуемое</label>
-                                </div>
-                                <div class="filter-panel__sort-item col">
-                                    <input type="radio" class="filter-panel__sort-btn" name="sortByFilter" id="sortByFastDelivery" data-sort="delivery" checked>
-                                    <label class="btn" for="sortByFastDelivery">Быстрая доставка</label>
-                                </div>
-                                <div class="filter-panel__sort-item col">
-                                    <input type="radio" class="filter-panel__sort-btn" name="sortByFilter" id="sortByPopular" data-sort="popularity">
-                                    <label class="btn" for="sortByPopular">Популярное</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Фильтр по цене -->
-                        <div class="filter-panel__price">
-                            <h3 class="filter-panel__price-title">Цена</h3>
-                            <label for="priceSlider" class="visually-hidden">Цена до</label>
-                            <input
-                                type="range"
-                                class="filter-panel__price-slider"
-                                id="priceSlider"
-                                min="0"
-                                max="15000"
-                                step="500"
-                                value="15000"
-                            />
-                            <div class="filter-panel__price-range">
-                                <span>0 ₸</span>
-                                <span class="price-range__current-price">15000 ₸</span>
-                            </div>
-                        </div>
-
-                        <button id="applyFiltersButton" class="filter-panel__apply-btn">Применить</button>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
 
     <!-- Если не найдены рестораны или блюда -->
     <section class="no-results mt-5 mb-5" style="display: none;">
@@ -186,177 +80,67 @@
         </div>
     </section>
 
-    <!-- Наши лучшие рестораны -->
-    <section class="our-restaurants">
+    <!-- Наши лучшие товары -->
+    <section class="our-catalog">
         <div class="container-sm">
-
             <!-- Обертка сетки -->
-            <div class="our-restaurants__wrapper">
+            <div class="our-catalog__wrapper row g-3">
                 <!-- Титул -->
-                <h2 class="our-restaurants__title text-center">Наши лучшие <span class="highlight--purple">рестораны</span></h2>
+                <!-- FIX: Заменить титул на что-то связаное с каталогом, либо убрать титул -->
+                <h2 class="our-catalog__title col-12 text-center">Наши лучшие <span class="highlight--purple">товары</span></h2>
 
-                <!-- Карточки ресторанов -->
-                <div class="our-restaurants__restaurants-wrapper col-12 mb-2">
-                    <div class="our-restaurants__restaurant card h-100" data-restaurant-id="rest-1" data-delivery-time="1440" data-popularity="2" data-categories="asian|pizza">
-                        <a href="the_chicken_king_restaurant.html">
-                            <img src="../img/the_chicken_king.webp" alt="The Chicken King Restaurant" class="card-img-top">
-
-                            <div class="card-body">
-                                <span class="badge badge-healthy mb-1">Полезно</span>
-                                <h5 class="card-title mb-2">The Chicken King</h5>
-
-                                <div class="our-restaurants__restaurant-info d-flex align-items-center">
-                                    <span class="me-1 me-xl-2">24min •</span>
-                                    <img src="../icons/purple_star.svg" alt="Purple star">
-                                    <span class="restaurant__rating ms-1">4.8</span>
-                                </div>
+                <!-- Левая колонка (фильтры) -->
+                <div class="our-catalog__filters col-12 col-md-4 col-lg-3">
+                    <div class="catalog-filter__filter-panel">
+                        <!-- Поиск -->
+                        <div class="catalog-filter__search mb-3">
+                            <div class="form-floating">
+                                <input type="text" class="catalog-filter__search-input form-control" placeholder="Поиск" id="catalogSearchInput">
+                                <label for="catalogSearchInput">Поиск</label>
                             </div>
-                        </a>
-                    </div>
+                        </div>
 
-                    <div class="our-restaurants__restaurant card h-100" data-restaurant-id="rest-2" data-delivery-time="1440" data-popularity="5"  data-categories="asian">
-                        <a href="the_fishman_restaurant.html">
-                            <img src="../img/the_fishman.webp" alt="The Fishman Restaurant" class="card-img-top">
-
-                            <div class="card-body">
-                                <span class="badge badge-trending mb-1">Популярно</span>
-                                <h5 class="card-title mb-2">The Fishman</h5>
-
-                                <div class="our-restaurants__restaurant-info d-flex align-items-center">
-                                    <span class="me-1 me-xl-2">24min •</span>
-                                    <img src="../icons/purple_star.svg" alt="Purple star">
-                                    <span class="restaurant__rating ms-1">4.8</span>
-                                </div>
+                        <!-- Категории -->
+                        <h3 class="filter-panel__category-title">Категории</h3>
+                        <div class="filter-panel__category">
+                            <div class="filter-panel__category-list" id="categoryFilters">
+                                <!-- Кнопки категорий будут добавлены через JS -->
                             </div>
-                        </a>
-                    </div>
+                        </div>
 
-                    <div class="our-restaurants__restaurant card h-100" data-restaurant-id="rest-3" data-delivery-time="1440" data-popularity="3" data-categories="asian|pizza">
-                        <a href="the_chicken_king_restaurant.html">
-                            <img src="../img/the_chicken_king.webp" alt="The Chicken King Restaurant" class="card-img-top">
-
-                            <div class="card-body">
-                                <span class="badge badge-healthy mb-1">Полезно</span>
-                                <h5 class="card-title mb-2">The Chicken King</h5>
-
-                                <div class="our-restaurants__restaurant-info d-flex align-items-center">
-                                    <span class="me-1 me-xl-2">24min •</span>
-                                    <img src="../icons/purple_star.svg" alt="Purple star">
-                                    <span class="restaurant__rating ms-1">4.8</span>
-                                </div>
+                        <!-- Цена -->
+                        <h3 class="filter-panel__price-title mt-3">Цена, максимум</h3>
+                        <div class="filter-panel__price">
+                            <input type="range" class="filter-panel__price-slider" id="priceRange" min="0" max="1000" value="1000">
+                            <div class="filter-panel__price-range d-flex justify-content-between">
+                                <span class="price-range__min-price" id="priceRangeMin">$0</span>
+                                <span class="price-range__current-price" id="priceRangeValue">$1000</span>
                             </div>
-                        </a>
+                        </div>
+
+                        <button class="filter-panel__apply-btn btn w-100 mt-3" id="applyFiltersButton" type="button">Применить</button>
+                        <button class="btn btn-link w-100 mt-1" id="resetFiltersButton" type="button">Сбросить</button>
                     </div>
                 </div>
 
-            </div>
+                <!-- Карточки товаров -->
+                <div class="our-catalog__items-wrapper col-12 col-md-8 col-lg-9 mb-2" id="catalogItemsWrapper">
+                    <!-- <div class="our-catalog__item card h-100" data-dish-id="dish-1" data-delivery-time="1440" data-popularity="3" data-categories="asian">
+                        <img src="img/chicken_hell_dish.png" alt="Chicken Hell Dish" class="card-img-top rounded-circle">
 
-        </div>
-    </section>
+                        <div class="card-body">
+                            <span class="badge badge-healthy">Полезно</span>
+                            <h5 class="card-title mb-1">Chicken Hell</h5>
 
-    <!-- Наши лучшие блюда -->
-    <section class="our-dishes">
-        <div class="container-sm">
-            <!-- Обертка сетки -->
-            <div class="our-dishes__wrapper">
-                <!-- Титул -->
-                <h2 class="our-dishes__title col-12 text-center">Наши лучшие <span class="highlight--purple">блюда</span></h2>
-                <!-- Карточки блюд -->
-                <div class="our-dishes__dishes-wrapper col-12 mb-2">
-                    <div class="our-dishes__dish card h-100" data-dish-id="dish-1" data-delivery-time="1440" data-popularity="3" data-categories="asian">
-                        <a href="the_chicken_king_restaurant.html">
-                            
-                            <img src="../img/chicken_hell_dish.png" alt="Chicken Hell Dish" class="card-img-top rounded-circle">
-
-                            <div class="card-body">
-                                <span class="badge badge-healthy">Полезно</span>
-                                <h5 class="card-title mb-1">Chicken Hell</h5>
-
-                                <div class="our-dishes__dish-info d-flex align-items-center mb-2">
-                                    <span class="me-1 me-xl-2">24min •</span>
-                                    <img src="../icons/purple_star.svg" alt="Purple star">
-                                    <span class="dish__rating ms-1">4.8</span>
-                                </div>
-                                <h5 class="menu-section__dish-price">₸1799</h5>
+                            <div class="our-catalog__item-info d-flex align-items-center mb-2">
+                                <img src="icons/purple_star.svg" alt="Purple star">
+                                <span class="dish__rating">4.8</span>
                             </div>
-                        </a>
-                    </div>
+                            <h5 class="menu-section__dish-price">₸1799</h5>
 
-                    <div class="our-dishes__dish card h-100" data-dish-id="dish-2" data-delivery-time="2040" data-popularity="5" data-categories="asian">
-                        <a href="the_chicken_king_restaurant.html">
-                            
-                            <img src="../img/swe_dish.png" alt="Swe Dish" class="card-img-top rounded-circle">
-
-                            <div class="card-body">
-                                <span class="badge badge-trending">Популярно</span>
-                                <h5 class="card-title mb-1">Swe Dish</h5>
-
-                                <div class="our-dishes__dish-info d-flex align-items-center mb-2">
-                                    <span class="me-1 me-xl-2">34min •</span>
-                                    <img src="../icons/purple_star.svg" alt="Purple star">
-                                    <span class="dish__rating ms-1">4.9</span>
-                                </div>
-                                <h5 class="menu-section__dish-price">₸2499</h5>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="our-dishes__dish card h-100" data-dish-id="dish-3" data-delivery-time="1440" data-popularity="2" data-categories="asian">
-                        <a href="the_fishman_restaurant.html">
-                            
-                            <img src="../img/fish_hell_dish.png" alt="Fish Hell Dish" class="card-img-top rounded-circle">
-
-                            <div class="card-body">
-                                <span class="badge badge-supreme">Эксклюзив</span>
-                                <h5 class="card-title mb-1">Fish Hell</h5>
-
-                                <div class="our-dishes__dish-info d-flex align-items-center mb-2">
-                                    <span class="me-1 me-xl-2">24min •</span>
-                                    <img src="../icons/purple_star.svg" alt="Purple star">
-                                    <span class="dish__rating ms-1">4.9</span>
-                                </div>
-                                <h5 class="menu-section__dish-price">₸2499</h5>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="our-dishes__dish card h-100" data-dish-id="dish-4" data-delivery-time="1440" data-popularity="5" data-categories="asian">
-                        <a href="the_chicken_king_restaurant.html">
-                            
-                            <img src="../img/chicken_hell_dish.png" alt="Chicken Hell Dish" class="card-img-top rounded-circle">
-
-                            <div class="card-body">
-                                <span class="badge badge-healthy">Полезно</span>
-                                <h5 class="card-title mb-1">Chicken Hell</h5>
-
-                                <div class="our-dishes__dish-info d-flex align-items-center mb-2">
-                                    <span class="me-1 me-xl-2">24min •</span>
-                                    <img src="../icons/purple_star.svg" alt="Purple star">
-                                    <span class="dish__rating ms-1">4.8</span>
-                                </div>
-                                <h5 class="menu-section__dish-price">₸1799</h5>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="our-dishes__dish card h-100" data-dish-id="dish-5" data-delivery-time="2040" data-popularity="6" data-categories="asian">
-                        <a href="the_chicken_king_restaurant.html">
-                            
-                            <img src="../img/swe_dish.png" alt="Swe Dish" class="card-img-top rounded-circle">
-
-                            <div class="card-body">
-                                <span class="badge badge-trending">Популярно</span>
-                                <h5 class="card-title mb-1">Swe Dish</h5>
-
-                                <div class="our-dishes__dish-info d-flex align-items-center mb-2">
-                                    <span class="me-1 me-xl-2">34min •</span>
-                                    <img src="../icons/purple_star.svg" alt="Purple star">
-                                    <span class="dish__rating ms-1">4.9</span>
-                                </div>
-                                <h5 class="menu-section__dish-price">₸2499</h5>
-                            </div>
-                        </a>
-                    </div>
+                            <button class="product__cart-btn add-to-cart"></button>
+                        </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -447,14 +231,14 @@
 
             <div class="footer__top col-12 d-flex justify-content-between align-items-sm-center">
                 <div class="footer__logo">
-                    <a href="../index.html" class="eatly-logo">eatly</a>
+                    <a href="index.html" class="eatly-logo">eatly</a>
                 </div>
 
                 <div class="footer__nav">
                     <ul class="footer__list menu list-reset">
-                        <li class="menu__item"><a href="../index.html">Главная</a></li>
-                        <li class="menu__item"><a href="#">Меню</a></li>
-                        <li class="menu__item"><a href="contact_page.html">Контакты</a></li>
+                        <li class="menu__item"><a href="index.html">Главная</a></li>
+                        <li class="menu__item"><a href="#">Каталог</a></li>
+                        <li class="menu__item"><a href="cart.html">Корзина</a></li>
                     </ul>
                 </div>
             </div>
@@ -500,7 +284,12 @@
 </footer>
 
 <!-- Скрипты -->
-<script src="../js/app.js"></script>
-<script src="../js/search_filter.js"></script>
+<!-- <script src="js/app.js"></script> -->
+
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/models.js"></script>
+<script src="js/catalog.js"></script> 
+
 </body>
 </html>
