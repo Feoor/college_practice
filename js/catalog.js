@@ -30,7 +30,7 @@ async function renderProducts(products) {
   products.forEach(p => {
     const card = p.renderCard();
     card.addEventListener("click", () => {
-      window.location.href = `product.html?id=${p.getId()}`;
+      window.location.href = `product.html?id=${p.id}`;
     });
     wrapper.appendChild(card);
   })

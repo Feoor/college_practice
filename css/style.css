@@ -34,12 +34,12 @@
   font-weight: 100 700;
   src: url("../fonts/Quicksand/Quicksand-VariableFont_wght.ttf") format("truetype");
 }
-.eatly-logo {
+.shopify-logo {
   position: relative;
   padding-left: 54px;
   /* Логотип */
 }
-.eatly-logo::before {
+.shopify-logo::before {
   display: inline-block;
   content: "";
   width: 46px;
@@ -48,7 +48,7 @@
   background-size: contain;
   position: absolute;
   top: 50%;
-  right: 68px;
+  right: 96px;
   transform: translateY(-45%);
 }
 
@@ -233,7 +233,7 @@ body.lock {
   align-items: center;
   margin-bottom: 32px;
 }
-.header__wrapper .sidebar .sidebar__header .eatly-logo::before {
+.header__wrapper .sidebar .sidebar__header .shopify-logo::before {
   right: 6px;
 }
 .header__wrapper .sidebar .sidebar__header .sidebar__close-btn {
@@ -458,7 +458,7 @@ body.lock {
 
 /* Адаптивность навбара */
 @media screen and (max-width: 1199.98px) {
-  .eatly-logo::before {
+  .shopify-logo::before {
     width: 46px;
     height: 46px;
     right: 60px;
@@ -510,10 +510,10 @@ body.lock {
   }
 }
 @media screen and (max-width: 767.98px) {
-  .eatly-logo {
+  .shopify-logo {
     padding-left: 52px;
   }
-  .eatly-logo::before {
+  .shopify-logo::before {
     width: 46px;
     height: 42px;
     right: 58px;
