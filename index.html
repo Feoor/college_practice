@@ -16,7 +16,7 @@
 </head>
 <body>
 <!-- Навбар -->
-<header class="header">
+<header class="header" id="header">
     <div class="container-sm">
         <!--  Навигация  -->
         <div class="header__wrapper">
@@ -30,14 +30,14 @@
                 <nav class="header__nav">
                     <ul class="header__list menu list-reset">
                         <li class="menu__item menu__item--active"><a href="#">Каталог</a></li>
-                        <li class="menu__item"><a href="cart.html">Корзина</a></li>
+                        <li class="menu__item"><a href="cart.html">Корзина <span id="cartCount" class="cart-count badge rounded-pill bg-primary">0</span></a></li>
                     </ul>
                 </nav>
             </div>
 
             <div class="header__right-side">
-                <a href="sign_in.html" class="header__login">Войти</a>
-                <a href="sign_up.html" class="header__sign-up">Зарегистрироваться</a>
+                <a href="auth.html?mode=sign_in" class="header__login">Войти</a>
+                <a href="auth.html?mode=sign_up" class="header__sign-up">Зарегистрироваться</a>
 
                 <button id="headerMenuButton" class="header__menu">
                     <span></span>
@@ -124,23 +124,8 @@
                 </div>
 
                 <!-- Карточки товаров -->
-                <div class="our-catalog__items-wrapper col-12 col-md-8 col-lg-9 mb-2" id="catalogItemsWrapper">
-                    <!-- <div class="our-catalog__item card h-100" data-dish-id="dish-1" data-delivery-time="1440" data-popularity="3" data-categories="asian">
-                        <img src="img/chicken_hell_dish.png" alt="Chicken Hell Dish" class="card-img-top rounded-circle">
-
-                        <div class="card-body">
-                            <span class="badge badge-healthy">Полезно</span>
-                            <h5 class="card-title mb-1">Chicken Hell</h5>
-
-                            <div class="our-catalog__item-info d-flex align-items-center mb-2">
-                                <img src="icons/purple_star.svg" alt="Purple star">
-                                <span class="dish__rating">4.8</span>
-                            </div>
-                            <h5 class="menu-section__dish-price">₸1799</h5>
-
-                            <button class="product__cart-btn add-to-cart"></button>
-                        </div>
-                    </div> -->
+                <div class="our-catalog__items-wrapper justify-content-center col-12 col-md-8 col-lg-9 mb-2" id="catalogItemsWrapper">
+                    <!-- Карточки товаров будут добавлены через JS -->
                 </div>
 
             </div>
@@ -170,7 +155,7 @@
                     </div>
                     <!-- Ответ, скрытый по умолчанию -->
                     <div class="faq__question-body"  id="faqAnswerOne">
-                        Выберите понравившиеся блюда или ресторан, добавьте позиции в корзину и следуйте инструкциям
+                        Выберите понравившиеся товары, добавьте позиции в корзину и следуйте инструкциям
                         для оформления заказа.
                     </div>
                 </div>
@@ -204,7 +189,7 @@
                         </button>
                     </div>
                     <div class="faq__question-body">
-                        Да, вы можете отменить или изменить заказ до его подтверждения рестораном, связавшись с поддержкой.
+                        Да, вы можете отменить или изменить заказ до его подтверждения продавцом, связавшись с поддержкой.
                     </div>
                 </div>
 
@@ -289,6 +274,7 @@
 <script src="js/api.js"></script>
 <script src="js/common.js"></script>
 <script src="js/models.js"></script>
+<script src="js/cart.js"></script>
 <script src="js/catalog.js"></script> 
 
 </body>

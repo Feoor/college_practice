@@ -101,6 +101,21 @@ body.lock {
   align-items: center;
   gap: 12px;
 }
+.header__wrapper .header__right-side .header__user-name {
+  font-family: var(--font-family), sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #606060;
+}
+.header__wrapper .header__right-side .header__logout-btn {
+  font-family: var(--second-family), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 150%;
+  border-radius: 17px;
+  padding: 8px 16px;
+}
 .header__wrapper .header__right-side .header__login {
   font-family: var(--second-family), sans-serif;
   font-weight: 700;
@@ -797,40 +812,95 @@ body.lock {
 .our-catalog__filters .catalog-filter__filter-panel .filter-panel__sort,
 .our-catalog__filters .catalog-filter__filter-panel .filter-panel__price { margin-bottom: 24px; }
 
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-item {
   position: relative;
-  width: 100%;
-  padding-top: 66px;
-  padding-bottom: 12px;
-  border: none;
+  display: block;
+}
+
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-label {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px 14px 50px;
+  border: 2px solid #e0e0e0;
   border-radius: 14px;
-  background: rgba(255, 222, 138, 0.35);
+  background: #fff;
   font-family: var(--font-family), sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  text-align: center;
-  color: #d69900;
-  transition: 0.2s transform;
-}
-.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-item::after {
-  display: inline-block;
-  content: "";
-  width: 35px;
-  height: 35px;
-  background: url("../icons/pizza.svg") no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: 35%;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  transform: translateY(-50%);
-}
-.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-item--active {
+  font-size: 15px;
+  color: #686868;
+  cursor: pointer;
+  transition: all 0.3s ease;
   position: relative;
-  outline: 2px solid currentColor;
-  box-shadow: var(--bs-box-shadow-sm);
-  transform: scale(1.1);
+  user-select: none;
+}
+
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-label:hover {
+  border-color: var(--purple);
+  background: rgba(108, 95, 188, 0.05);
+  color: var(--purple);
+}
+
+/* Кастомный радио-индикатор */
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-label::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d0d0d0;
+  border-radius: 50%;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Внутренний круг при выборе */
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-label::after {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--purple);
+  transition: all 0.3s ease;
+}
+
+/* Стили при активации */
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-radio:checked + .filter-panel__category-label {
+  border-color: var(--purple);
+  background: rgba(108, 95, 188, 0.1);
+  color: var(--purple);
+  font-weight: 700;
+}
+
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-radio:checked + .filter-panel__category-label::before {
+  border-color: var(--purple);
+  background: #fff;
+}
+
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-radio:checked + .filter-panel__category-label::after {
+  transform: translateY(-50%) scale(1);
+}
+
+/* Анимация при фокусе */
+.our-catalog__filters .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-radio:focus + .filter-panel__category-label {
+  box-shadow: 0 0 0 3px rgba(108, 95, 188, 0.2);
 }
 .our-catalog__filters .catalog-filter__filter-panel .filter-panel__sort-list .filter-panel__sort-item { display: flex; align-items: start; }
 .our-catalog__filters .catalog-filter__filter-panel .filter-panel__sort-list .filter-panel__sort-item:nth-child(even) { justify-content: left; }
@@ -1265,10 +1335,19 @@ body.lock {
   .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__price-title {
     font-size: 20px;
   }
-  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-item {
-    padding-top: 50px;
-    padding-bottom: 8px;
-    font-size: 16px;
+  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-label {
+    font-size: 14px;
+    padding: 12px 18px 12px 45px;
+  }
+  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-label::before {
+    width: 18px;
+    height: 18px;
+    left: 16px;
+  }
+  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-label::after {
+    width: 8px;
+    height: 8px;
+    left: 21px;
   }
   .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__sort-list .filter-panel__sort-btn {
     font-size: 14px;
@@ -1368,8 +1447,8 @@ body.lock {
   .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__price-title {
     font-size: 24px;
   }
-  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-item {
-    font-size: 18px;
+  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-label {
+    font-size: 15px;
   }
   .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__sort-list .filter-panel__sort-btn {
     font-size: 18px;
@@ -1434,8 +1513,19 @@ body.lock {
   .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__price-title {
     font-size: 20px;
   }
-  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-list .filter-panel__category-item {
-    font-size: 14px;
+  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-label {
+    font-size: 13px;
+    padding: 10px 16px 10px 42px;
+  }
+  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-label::before {
+    width: 16px;
+    height: 16px;
+    left: 14px;
+  }
+  .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__category-label::after {
+    width: 7px;
+    height: 7px;
+    left: 18.5px;
   }
   .catalog-filter__wrapper .catalog-filter__filter-panel .filter-panel__sort-list .filter-panel__sort-btn {
     font-size: 15px;
@@ -1537,15 +1627,7 @@ body.lock {
 
 /* Добавить блюдо в корзину */
 .add-to-cart {
-  position: absolute;
-  bottom: 26px;
-  right: 24px;
-  border: none;
-  border-radius: 9px;
-  background-color: #323142;
-  width: 44px;
-  height: 40px;
-  transition: background-color 0.2s;
+  height: 46px;
 }
 .add-to-cart::after {
   display: inline-block;
@@ -1578,7 +1660,7 @@ body.lock {
 .cart-btn:hover {
   background-color: var(--purple-hover);
 }
-.cart-btn .cart__count {
+.cart-count {
   font-size: 16px;
 }
 
@@ -2504,28 +2586,100 @@ h2 {
   flex: 0 0 auto;
   scroll-snap-align: start;
   width: 225px;
-  padding: 37px 20px 26px;
+  padding: 20px;
   border: 2px solid #f4f4f4;
-  border-radius: 30px;
+  border-radius: 24px;
+  background: #fff;
   position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(108, 95, 188, 0.06);
 }
 .our-catalog__wrapper .our-catalog__item:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 32px rgba(108, 95, 188, 0.15);
+  border-color: var(--purple);
 }
 .our-catalog__wrapper .our-catalog__item .card-img-top {
-  border-radius: 30px 30px 0 0;
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #f7f8fa;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+.our-catalog__wrapper .our-catalog__item:hover .card-img-top {
+  transform: scale(1.05);
 }
 .our-catalog__wrapper .our-catalog__item .card-body {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.our-catalog__wrapper .our-catalog__item .card-body h5.card-title {
+  font-family: var(--font-family), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+  color: #323142;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 47px;
 }
 .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-family), sans-serif;
-  font-weight: 400;
-  font-size: 19px;
-  line-height: 133%;
+  font-weight: 600;
+  font-size: 15px;
   color: #8e97a6;
+  margin-bottom: 4px;
+}
+.our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info img {
+  width: 18px;
+  height: 18px;
+}
+.our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info .item__rating {
+  font-weight: 700;
+  color: var(--purple);
+}
+.our-catalog__wrapper .our-catalog__item .card-body .menu-section__dish-price {
+  font-family: var(--font-family), sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+.our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 14px;
+  background: var(--purple);
+  font-family: var(--font-family), sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn:hover {
+  background: var(--purple-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(108, 95, 188, 0.3);
+}
+.our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn:active {
+  transform: translateY(0);
 }
 
 /* Адаптивность главной страницы */
@@ -2581,18 +2735,30 @@ h2 {
     gap: 22px;
   }
   .our-catalog__wrapper .our-catalog__item {
-    width: 175px;
-    padding: 1rem;
+    width: 200px;
+    padding: 18px;
   }
-  .our-catalog__wrapper .our-catalog__item h5 {
-    font-size: 22px;
+  .our-catalog__wrapper .our-catalog__item .card-img-top {
+    height: 160px;
+    padding: 14px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body h5.card-title {
+    font-size: 17px;
+    min-height: 44px;
   }
   .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info {
-    font-size: 16px;
+    font-size: 14px;
   }
   .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info img {
-    width: 23px;
-    height: 23px;
+    width: 16px;
+    height: 16px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .menu-section__dish-price {
+    font-size: 22px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn {
+    padding: 10px 18px;
+    font-size: 14px;
   }
 }
 @media screen and (max-width: 991.98px) {
@@ -2616,18 +2782,30 @@ h2 {
     padding-bottom: 76px;
   }
   .our-catalog__wrapper .our-catalog__item {
-    width: 200px;
-    padding: 1rem;
+    width: 190px;
+    padding: 16px;
   }
-  .our-catalog__wrapper .our-catalog__item h5 {
-    font-size: 24px;
+  .our-catalog__wrapper .our-catalog__item .card-img-top {
+    height: 150px;
+    padding: 12px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body h5.card-title {
+    font-size: 16px;
+    min-height: 42px;
   }
   .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info {
-    font-size: 18px;
+    font-size: 14px;
   }
   .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info img {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .menu-section__dish-price {
+    font-size: 20px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn {
+    padding: 10px 16px;
+    font-size: 13px;
   }
 }
 @media screen and (max-width: 767.98px) {
@@ -2646,18 +2824,33 @@ h2 {
     padding-bottom: 60px;
   }
   .our-catalog__wrapper .our-catalog__item {
-    width: 175px;
-    padding: 1rem;
+    width: 165px;
+    padding: 14px;
   }
-  .our-catalog__wrapper .our-catalog__item h5 {
-    font-size: 20px;
+  .our-catalog__wrapper .our-catalog__item .card-img-top {
+    height: 140px;
+    padding: 10px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body h5.card-title {
+    font-size: 15px;
+    min-height: 39px;
   }
   .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info {
-    font-size: 16px;
+    font-size: 13px;
   }
   .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info img {
-    width: 22px;
-    height: 22px;
+    width: 15px;
+    height: 15px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .menu-section__dish-price {
+    font-size: 18px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn::before {
+    font-size: 14px;
   }
 }
 @media screen and (max-width: 566.98px) {
@@ -2680,11 +2873,35 @@ h2 {
   .our-restaurants__wrapper .our-restaurants__restaurant .our-restaurants__restaurant-info {
     font-size: 16px;
   }
-  .our-catalog__wrapper .our-catalog__item h5 {
-    font-size: 20px;
+  .our-catalog__wrapper .our-catalog__item {
+    width: 155px;
+    padding: 12px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-img-top {
+    height: 130px;
+    padding: 8px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body h5.card-title {
+    font-size: 14px;
+    min-height: 37px;
   }
   .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info {
-    font-size: 16px;
+    font-size: 12px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .our-catalog__item-info img {
+    width: 14px;
+    height: 14px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .menu-section__dish-price {
+    font-size: 17px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  .our-catalog__wrapper .our-catalog__item .card-body .product__cart-btn::before {
+    font-size: 13px;
+    margin-right: 4px;
   }
 }
 

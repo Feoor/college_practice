@@ -25,21 +25,6 @@ function validateName(name) {
     return { valid: true, message: "" };
 }
 
-// Вход через социальные сети
-const googleButton = document.getElementById("googleAuthButton");
-const appleButton = document.getElementById("appleAuthButton");
-
-if (googleButton) {
-    googleButton.addEventListener("click", function () {
-        alert("Вход через Google");
-    });
-}
-if (appleButton) {
-    appleButton.addEventListener("click", function () {
-        alert("Вход через Apple");
-    });
-}
-
 // Для страницы входа
 const signInForm = document.getElementById("signInForm");
 

@@ -11,23 +11,36 @@ function logoutUser() {
   localStorage.removeItem("currentUser");
 }
 
+function showGreeting() {
+  const user = getCurrentUser();
+  if (user) {
+    alert(`Привет, ${user.name}!`);
+  }
+}
+
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  const cartCountElem = document.getElementById("cartCount");
+  if (cart && cartCountElem) {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCountElem.textContent = totalItems;
+    cartCountElem.style.display = totalItems > 0 ? "inline-block" : "none";
+  }
+}
+
 // Шапка
 function renderHeader() {
   const header = document.getElementById("header");
+  const rightSide = header.querySelector(".header__right-side");
   if (!header) return;
 
   const user = getCurrentUser();
 
-  header.innerHTML = `
-    <h1><a href="index.html">Магазин</a></h1>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="cart.html">Корзина</a>
-      ${user ? 
-        `<span>Привет, ${user.name}</span> <button id="logout-btn">Выйти</button>` : 
-        `<a href="auth.html">Вход / Регистрация</a>`}
-    </nav>
-  `;
+  rightSide.innerHTML = user
+    ? `<span class="header__user-name">Привет, <span class="highlight--purple">${user.name}!</span></span>
+      <button id="logout-btn" class="btn btn-secondary header__logout-btn">Выйти</button>`
+    : `<a href="auth.html?mode=sign_in" class="header__login">Войти</a>
+      <a href="auth.html?mode=sign_up" class="header__sign-up">Зарегистрироваться</a>`;
 
   if (user) {
     document.getElementById("logout-btn").addEventListener("click", () => {
@@ -37,4 +50,7 @@ function renderHeader() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", renderHeader);
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+  updateCartCount();
+});
