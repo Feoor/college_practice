@@ -9,15 +9,15 @@ class User {
 
 class Product {
     // id, title, price, description, image, category
-    constructor(id, title, price, rating, description, image, category, quantity = 0) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.rating = rating;
-        this.description = description;
-        this.image = image;
-        this.category = category;
-        this.quantity = quantity
+    constructor(data) {
+      this.id = data.id;
+      this.title = data.title;
+      this.price = data.price;
+      this.rating = data.rating.rate;
+      this.description = data.description;
+      this.image = data.image;
+      this.category = data.category;
+      this.quantity = data.quantity || 0;
     }
 
     renderCard() {

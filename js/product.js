@@ -12,16 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Загрузка товара
         const container = document.querySelector("section.product-page .container-sm");
         const productRaw = await getProductById(productId);
-        const product = new Product(
-            productRaw.id,
-            productRaw.title,
-            productRaw.price,
-            productRaw.rating.rate,
-            productRaw.description,
-            productRaw.image,
-            productRaw.category,
-            productRaw.quantity
-        );
+        const product = new Product(productRaw);
 
         container.appendChild(product.renderProductPage());
 

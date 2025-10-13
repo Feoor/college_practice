@@ -1,7 +1,7 @@
 //  каталог на главной (пока без классов)
 document.addEventListener("DOMContentLoaded", async () => {
   const productsRaw = await getProducts();
-  const products = productsRaw.map(p => new Product(p.id, p.title, p.price, p.rating.rate, p.description, p.image, p.category, p.quantity));
+  const products = productsRaw.map(p => new Product(p));
   
   await setupCategoryFilter();
   await renderProducts(products);
