@@ -194,4 +194,16 @@ async function renderCartSummary(cart) {
 
     const cartTotalPrice = summaryElem.querySelector("#cartTotal");
     if (cartTotalPrice) cartTotalPrice.textContent = `$${(totalPrice + deliveryFee).toFixed(2)}`;
+
+    const checkoutBtn = summaryElem.querySelector("#checkoutBtn");
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener("click", () => {
+            // Логика оформления заказа
+            alert("Заказ оформлен!");
+            cart.clear();
+            saveCart(cart);
+            renderCart(cart);
+            renderCartSummary(cart);
+        });
+    }
 }
